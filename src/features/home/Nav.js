@@ -10,7 +10,8 @@ export default class Nav extends Component {
         <div className="Navstatus displaycenter">Status</div>
         <div className="NavcorrectAns displaycenter">correct Answer</div>
         <div className="Navtype displaycenter">Type</div>
-        <div className="Navsolution displaycenter">Has Solution</div>
+        <div className='Navhas-suggest-answer'>has suggest answer</div>
+        <div className="Navsolution displaycenter">has Solution</div>
         <div className="NavcreatedAt displaycenter">created At</div>
         <div className="NavupdatedAt displaycenter">updated At </div>
       </div>

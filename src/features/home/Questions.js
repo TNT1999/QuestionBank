@@ -5,21 +5,37 @@ import { connect } from 'react-redux';
 import Question from './Question';
 import * as actions from './redux/actions';
 import Nav from './Nav';
+import Pagination from './Pagination';
 export class Questions extends Component {
   static propTypes = {
     home: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
   };
   componentDidMount() {
-    this.props.actions.loadQuestions();
+    if (this.props.home.listQuestion.length === 0) {
+      this.props.actions.loadQuestions();
+    }
+    this.refs.loadlist.addEventListener('scroll', this.handle);
   }
+  componentWillUnmount() {
+    this.refs.loadlist.removeEventListener('scroll', this.handle);
+  }
+  handle = () => {
+    if (this.refs.loadlist.scrollTop + this.refs.loadlist.clientHeight === this.refs.loadlist.scrollHeight) {
+      //this.props.actions.nextPage();
+      //this.props.actions.loadQuestions()
+      console.log("scroll...,loading")
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
+        <Pagination />
         <Nav />
-        <div className="list-questions">
+        <div className="list-questions" ref="loadlist">
           {this.props.home.listQuestion.map((val, ind) => (
-            <Question key={ind} />
+            <Question key={ind}/>
           ))}
         </div>
       </React.Fragment>

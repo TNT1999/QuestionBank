@@ -3,10 +3,8 @@
 .home-nav {
   display: flex;
   padding: 8px 8px;
-  margin: 0 32px;
   background-color: #c5c5c5;
   font-weight: bold;
-  margin-top: 16px;
   border: 1px solid #cdcdcd;
   border-bottom: none;
   box-shadow: rgba(235, 232, 232, 0.498) 0px 1px 4px 0px;
@@ -20,28 +18,21 @@
     padding: 0 4px;
   }
   .NavcorrectAns {
-    flex: 1 1 0%;
-    padding: 0 4px;
-    text-align: center;
+    @extend .Navstatus;
   }
   .Navtype {
-    flex: 1 1 0%;
-    text-align: center;
-    padding: 0 4px;
+    @extend .Navstatus;
+  }
+  .Navhas-suggest-answer {
+    @extend .Navstatus;
   }
   .Navsolution {
-    flex: 1 1 0%;
-    text-align: center;
-    padding: 0 4px;
+    @extend .Navstatus;
   }
   .NavcreatedAt {
-    padding: 0 4px;
-    flex: 1 1 0%;
-    text-align: center;
+    @extend .Navstatus;
   }
   .NavupdatedAt {
-    padding: 0 4px;
-    flex: 1 1 0%;
-    text-align: center;
+    @extend .Navstatus;
   }
 }

@@ -1,10 +1,9 @@
 @import '../../styles/mixins';
 
 .list-questions {
-  margin: 0 32px;
   background-color: #eeeeee;
   border: 1px solid #cdcdcd;
   border-bottom: none;
-  height: 90vh;
+  height: 80vh;
   overflow: scroll;
 }

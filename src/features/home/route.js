@@ -1,7 +1,7 @@
 import {
   Questions,
 } from './';
-
+import {DetailQuestion} from './'
 export default {
   path: '/',
   name: 'Home',
@@ -11,5 +11,8 @@ export default {
       component: Questions,
       isIndex: true,
     },
+    {
+       path: '/:id', name: 'TestDetail', component: DetailQuestion
+    }
   ],
 };

@@ -1,7 +1,9 @@
 const initialState = {
   loadQuestionsPending: false,
   loadQuestionsError: null,
-  listQuestion:[]
+  listQuestion:[],
+  curPage:null,
+  curItemPerPage:null
 };
 
 export default initialState;
