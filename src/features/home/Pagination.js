@@ -52,13 +52,14 @@ export class Pagination extends Component {
     return Math.floor(totalQuestion / curItemPerPage);
   };
   handleClickMinus = () => {
-    this.setState({ curPage: this.state.curPage - 1 }, () => {
-      this.props.actions.loadQuestions(this.state.curPage, this.state.curItemPerPage);
+    this.setState({ curPage: parseInt(this.state.curPage) - 1 }, () => {
+      this.props.actions.loadQuestions(parseInt(this.state.curPage), parseInt(this.state.curItemPerPage));
     });
   };
   handleClickPlus = () => {
-    this.setState({ curPage: this.state.curPage + 1 }, () => {
-      this.props.actions.loadQuestions(this.state.curPage, this.state.curItemPerPage);
+    console.log(this.state)
+    this.setState({ curPage: parseInt(this.state.curPage) + 1 }, () => {
+      this.props.actions.loadQuestions(parseInt(this.state.curPage), parseInt(this.state.curItemPerPage));
     });
   };
   render() {
