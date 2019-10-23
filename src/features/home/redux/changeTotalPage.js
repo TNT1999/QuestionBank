@@ -17,7 +17,7 @@ export function reducer(state, action) {
     case HOME_CHANGE_TOTAL_PAGE:
       return {
         ...state,
-        totalPages:Math.ceil(state.totalQuestion/state.curItemPerPage)
+        totalPages:Math.floor(state.totalQuestion/state.curItemPerPage)
       };
 
     default:

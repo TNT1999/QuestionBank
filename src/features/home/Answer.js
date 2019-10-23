@@ -15,7 +15,6 @@ export class Answer extends Component {
 
   render() {
     const { answercontent } = this.props;
-    console.log(answercontent)
     return (
       <div className="answer">
         <div className="answer-main">

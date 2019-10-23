@@ -4,6 +4,7 @@ import { reducer as changeItemPageReducer } from './changeItemPage';
 import { reducer as changePageReducer } from './changePage';
 import { reducer as changeTotalPageReducer } from './changeTotalPage';
 import { reducer as loadTotalQuestionReducer } from './loadTotalQuestion';
+import { reducer as loadQuestionsByIdReducer } from './loadQuestionsById';
 
 const reducers = [
   loadQuestionsReducer,
@@ -11,6 +12,7 @@ const reducers = [
   changePageReducer,
   changeTotalPageReducer,
   loadTotalQuestionReducer,
+  loadQuestionsByIdReducer,
 ];
 
 export default function reducer(state = initialState, action) {

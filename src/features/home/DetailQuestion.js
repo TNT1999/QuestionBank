@@ -12,7 +12,12 @@ export class DetailQuestion extends Component {
     home: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
   };
-
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    if (this.props.home.listQuestion.length === 0) {
+      this.props.actions.loadQuestionsById(id);
+    }
+  }
   render() {
     const { listQuestion } = this.props.home;
     const { id } = this.props.match.params;
@@ -31,7 +36,20 @@ export class DetailQuestion extends Component {
         )}
       </div>
     ) : (
-      <div className="nq">No Question</div>
+      this.props.home.curQuestion && (
+        <div className="wrap-content-question">
+          <div className="f-question">
+            <ContentQuestion content={this.props.home.curQuestion.content} />
+            <Answers answers={this.props.home.curQuestion.answers} />
+          </div>
+          {this.props.home.curQuestion.solution && (
+            <div className="slt">
+              <label>Solution</label>
+              <Editor value={this.props.home.curQuestion.solution} readOnly />
+            </div>
+          )}
+        </div>
+      )
     );
   }
 }

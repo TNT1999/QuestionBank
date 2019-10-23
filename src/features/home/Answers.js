@@ -15,7 +15,7 @@ export class Answers extends Component {
     return (
       <div className="list-answer">
         {answers.map((ans, ind) => (
-          <Answer ABCD={String.fromCharCode(ind+65)} answercontent={ans.content} />
+          <Answer ABCD={String.fromCharCode(ind+65)} answercontent={ans.content} key={ind}/>
         ))}
       </div>
     );
