@@ -10,19 +10,15 @@ export class Pagination extends Component {
     home: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
   };
-
   state = {
     curItemPerPage: 20,
     curPage: 1,
   };
-
   componentDidUpdate() {
     this.refs.ipitem.value = this.state.curItemPerPage;
     this.refs.ipp.value = this.state.curPage;
   }
   componentDidMount() {
-     //this.refs.ipitem.value = this.props.home.curItemPerPage;
-   // this.refs.ipp.value = this.props.home.curPage;
     const { actions, home } = this.props;
     !home.totalQuestion &&
       actions.loadTotalQuestion().then(() => {
@@ -53,13 +49,19 @@ export class Pagination extends Component {
   };
   handleClickMinus = () => {
     this.setState({ curPage: parseInt(this.state.curPage) - 1 }, () => {
-      this.props.actions.loadQuestions(parseInt(this.state.curPage), parseInt(this.state.curItemPerPage));
+      this.props.actions.loadQuestions(
+        parseInt(this.state.curPage),
+        parseInt(this.state.curItemPerPage),
+      );
     });
   };
   handleClickPlus = () => {
-    console.log(this.state)
+    console.log(this.state);
     this.setState({ curPage: parseInt(this.state.curPage) + 1 }, () => {
-      this.props.actions.loadQuestions(parseInt(this.state.curPage), parseInt(this.state.curItemPerPage));
+      this.props.actions.loadQuestions(
+        parseInt(this.state.curPage),
+        parseInt(this.state.curItemPerPage),
+      );
     });
   };
   render() {
@@ -77,7 +79,7 @@ export class Pagination extends Component {
             max="100"
             placeholder="..."
             ref="ipitem"
-            value={this.state.curItemPerPage}
+            value={this.props.home.curItemPerPage}
           />
           items/page
         </div>
@@ -86,7 +88,7 @@ export class Pagination extends Component {
           <input
             onKeyDown={this.handleInput}
             onChange={this.handleChangeCurPage}
-            value={this.state.curPage}
+            value={this.props.home.curPage}
             type="number"
             min="1"
             placeholder="..."
