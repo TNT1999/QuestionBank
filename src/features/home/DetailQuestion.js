@@ -26,7 +26,7 @@ export class DetailQuestion extends Component {
       <div className="wrap-content-question">
         <div className="f-question">
           <ContentQuestion content={listQuestion[index].content} />
-          <Answers answers={listQuestion[index].answers} />
+          <Answers answers={listQuestion[index].answers} correct={listQuestion[index].correct_answer}/>
         </div>
         {listQuestion[index].solution && (
           <div className="slt">
@@ -40,7 +40,7 @@ export class DetailQuestion extends Component {
         <div className="wrap-content-question">
           <div className="f-question">
             <ContentQuestion content={this.props.home.curQuestion.content} />
-            <Answers answers={this.props.home.curQuestion.answers} />
+            <Answers answers={this.props.home.curQuestion.answers} correct={this.props.home.curQuestion.correct_answer}/>
           </div>
           {this.props.home.curQuestion.solution && (
             <div className="slt">

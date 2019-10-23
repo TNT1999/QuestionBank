@@ -15,8 +15,9 @@ export class Answer extends Component {
 
   render() {
     const { answercontent } = this.props;
+    console.log(this.props)
     return (
-      <div className="answer">
+      <div className={this.props.correct?"answer correct":"answer"}>
         <div className="answer-main">
           <div className="abcd">{this.props.ABCD}</div>
           <div className="answer-content">
