@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
+import Editor from 'tungtung-super-editor';
 
 export class Question extends Component {
   static propTypes = {
@@ -11,13 +12,11 @@ export class Question extends Component {
   };
 
   render() {
+    const { content } = this.props;
     return (
       <div className="content-question">
         <div className="wrap-question">
-          <div className="question-content">
-            { this.props.home.currentQuestion%2===0 ?" chawn Bảng biến thiên dưới dây là của hàm số nào Bảng biến thiên dưới dây là của hàm số nào Bảng biến thiên dưới dây là của hàm số nào Bảng biến thiên dưới dây là của hàm số nào":
-              " le Bảng biến thiên dưới dây là của hàm số nào Bảng biến thiên dưới dây là của hàm số nào Bảng biến thiên dưới dây là của hàm số nào Bảng biến thiên dưới dây là của hàm số nào"}
-          </div>
+          <div className="question-content">{content?<Editor value={content} readOnly />:"Undifined"}</div>
         </div>
       </div>
     );

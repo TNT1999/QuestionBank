@@ -4,14 +4,21 @@ import { render } from 'react-dom';
 import configStore from './common/configStore';
 import routeConfig from './common/routeConfig';
 import Root from './Root';
-
+import {
+  LatexPopover,
+  ToolBarPopover
+} from 'tungtung-super-editor/dist/style'
 const store = configStore();
 
 function renderApp(app) {
   render(
+    <React.Fragment>
     <AppContainer>
       {app}
-    </AppContainer>,
+    </AppContainer>
+      <LatexPopover id='slate_latexPopover' className='fadeIn animated' />
+      <ToolBarPopover id='slate_toolbarPopover' className='faster' />    
+    </React.Fragment>,
     document.getElementById('root')
   );
 }

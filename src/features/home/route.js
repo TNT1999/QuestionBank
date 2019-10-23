@@ -1,18 +1,11 @@
-import {
-  Questions,
-} from './';
-import {DetailQuestion} from './'
+import { Questions, DetailQuestion } from './';
+
 export default {
-  path: '/',
-  name: 'Home',
+ path: '',
+  name: 'test',
+  isIndex:true,
   childRoutes: [
-    { path: 'questions',
-      name: 'Questions page',
-      component: Questions,
-      isIndex: true,
-    },
-    {
-       path: '/:id', name: 'TestDetail', component: DetailQuestion
-    }
+    { path: '/:id', name: 'Detail Question', component: DetailQuestion },
+    { path: '/', name: 'Question', component: Questions },
   ],
 };

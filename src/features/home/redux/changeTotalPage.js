@@ -2,20 +2,22 @@
 // putting related actions and reducers in one file. See more at:
 // https://medium.com/@nate_wang/a-new-approach-for-managing-redux-actions-91c26ce8b5da
 
-import { EXAMPLES_COUNTER_RESET } from './constants';
+import {
+  HOME_CHANGE_TOTAL_PAGE,
+} from './constants';
 
-export function counterReset() {
+export function changeTotalPage() {
   return {
-    type: EXAMPLES_COUNTER_RESET,
+    type: HOME_CHANGE_TOTAL_PAGE,
   };
 }
 
 export function reducer(state, action) {
   switch (action.type) {
-    case EXAMPLES_COUNTER_RESET:
+    case HOME_CHANGE_TOTAL_PAGE:
       return {
         ...state,
-        count: 0,
+        totalPages:Math.ceil(state.totalQuestion/state.curItemPerPage)
       };
 
     default:

@@ -4,11 +4,12 @@ import {
   HOME_LOAD_QUESTIONS_FAILURE,
   HOME_LOAD_QUESTIONS_DISMISS_ERROR,
 } from './constants';
-
+import axios from 'axios';
 // Rekit uses redux-thunk for async actions by default: https://github.com/gaearon/redux-thunk
 // If you prefer redux-saga, you can use rekit-plugin-redux-saga: https://github.com/supnate/rekit-plugin-redux-saga
-export function loadQuestions(args = {}) {
-  return (dispatch) => { // optionally you can have getState as the second argument
+export function loadQuestions(p, l) {
+  return dispatch => {
+    // optionally you can have getState as the second argument
     dispatch({
       type: HOME_LOAD_QUESTIONS_BEGIN,
     });
@@ -21,18 +22,22 @@ export function loadQuestions(args = {}) {
       // doRequest is a placeholder Promise. You should replace it with your own logic.
       // See the real-word example at:  https://github.com/supnate/rekit/blob/master/src/features/home/redux/fetchRedditReactjsList.js
       // args.error here is only for test coverage purpose.
-      const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
+      //const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
+      console.log(p,l);
+      const doRequest = axios.get(
+        `https://tungtung-sample.herokuapp.com/tests/data/questions?page=${p}&limit=${l}&key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTcxNzQ5MzYwLCJleHAiOjE1NzE5MjIxNjB9.6FMUXaYps36zB9sHAmeDNFO1R8X5uk81DRxTfLgB4Kg`,
+      );
+
       doRequest.then(
-        (res) => {
+        res => {
           dispatch({
             type: HOME_LOAD_QUESTIONS_SUCCESS,
-           // data: res,
-           data:[1,2,3,4,5,6,7,8,8,9,10,11,12,13,14,15,16,17,18,19,20]
+            data: res.data,
           });
           resolve(res);
         },
         // Use rejectHandler as the second argument so that render errors won't be caught.
-        (err) => {
+        err => {
           dispatch({
             type: HOME_LOAD_QUESTIONS_FAILURE,
             data: { error: err },

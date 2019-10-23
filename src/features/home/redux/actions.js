@@ -1,2 +1,5 @@
 export { loadQuestions, dismissLoadQuestionsError } from './loadQuestions';
-export { nextPage } from './nextPage';
+export { changeItemPage } from './changeItemPage';
+export { changePage } from './changePage';
+export { changeTotalPage } from './changeTotalPage';
+export { loadTotalQuestion, dismissLoadTotalQuestionError } from './loadTotalQuestion';

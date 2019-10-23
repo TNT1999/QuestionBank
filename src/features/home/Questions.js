@@ -13,20 +13,21 @@ export class Questions extends Component {
   };
   componentDidMount() {
     if (this.props.home.listQuestion.length === 0) {
-      this.props.actions.loadQuestions();
+      this.props.actions.loadQuestions(this.props.home.curPage, this.props.home.curItemPerPage);
     }
-    this.refs.loadlist.addEventListener('scroll', this.handle);
+    //this.refs.loadlist.addEventListener('scroll', this.handle);
   }
-  componentWillUnmount() {
-    this.refs.loadlist.removeEventListener('scroll', this.handle);
-  }
-  handle = () => {
-    if (this.refs.loadlist.scrollTop + this.refs.loadlist.clientHeight === this.refs.loadlist.scrollHeight) {
-      //this.props.actions.nextPage();
-      //this.props.actions.loadQuestions()
-      console.log("scroll...,loading")
-    }
-  };
+  // componentWillUnmount() {
+  //   this.refs.loadlist.removeEventListener('scroll', this.handle);
+  // }
+  // handle = () => {
+  //   if (
+  //     this.refs.loadlist.scrollTop + this.refs.loadlist.clientHeight ===
+  //     this.refs.loadlist.scrollHeight
+  //   ) {
+  //     console.log('scroll...,loading');
+  //   }
+  // };
 
   render() {
     return (
@@ -34,8 +35,8 @@ export class Questions extends Component {
         <Pagination />
         <Nav />
         <div className="list-questions" ref="loadlist">
-          {this.props.home.listQuestion.map((val, ind) => (
-            <Question key={ind}/>
+          {this.props.home.loadQuestionsPending?<div className='loading'>Loading...</div>:this.props.home.listQuestion.map((val, ind) => (
+            <Question key={val._id} question={val}/>
           ))}
         </div>
       </React.Fragment>

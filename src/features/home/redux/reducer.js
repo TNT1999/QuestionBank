@@ -1,10 +1,16 @@
 import initialState from './initialState';
 import { reducer as loadQuestionsReducer } from './loadQuestions';
-import { reducer as nextPageReducer } from './nextPage';
+import { reducer as changeItemPageReducer } from './changeItemPage';
+import { reducer as changePageReducer } from './changePage';
+import { reducer as changeTotalPageReducer } from './changeTotalPage';
+import { reducer as loadTotalQuestionReducer } from './loadTotalQuestion';
 
 const reducers = [
   loadQuestionsReducer,
-  nextPageReducer,
+  changeItemPageReducer,
+  changePageReducer,
+  changeTotalPageReducer,
+  loadTotalQuestionReducer,
 ];
 
 export default function reducer(state = initialState, action) {

@@ -2,20 +2,21 @@
 // putting related actions and reducers in one file. See more at:
 // https://medium.com/@nate_wang/a-new-approach-for-managing-redux-actions-91c26ce8b5da
 
-import { EXAMPLES_COUNTER_PLUS_ONE } from './constants';
+import { HOME_CHANGE_PAGE } from './constants';
 
-export function counterPlusOne() {
+export function changePage(curPage) {
   return {
-    type: EXAMPLES_COUNTER_PLUS_ONE,
+    type: HOME_CHANGE_PAGE,
+    curPage,
   };
 }
 
 export function reducer(state, action) {
   switch (action.type) {
-    case EXAMPLES_COUNTER_PLUS_ONE:
+    case HOME_CHANGE_PAGE:
       return {
         ...state,
-        count: state.count + 1,
+        curPage: action.curPage,
       };
 
     default:

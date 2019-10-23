@@ -11,32 +11,12 @@ export class Answers extends Component {
   };
 
   render() {
+    const { answers } = this.props;
     return (
       <div className="list-answer">
-        <Answer
-          ABCD={'A'}
-          answercontent={
-            'It is a long established fact that a reader will be distracted by the readable content of a page'
-          }
-        />
-        <Answer
-          ABCD={'B'}
-          answercontent={
-            'It is a long established fact that a reader will be distracted by the readable content of a page'
-          }
-        />
-        <Answer
-          ABCD={'C'}
-          answercontent={
-            'It is a long established fact that a reader will be distracted by the readable content of a page'
-          }
-        />
-        <Answer
-          ABCD={'D'}
-          answercontent={
-            'It is a long established fact that a reader will be distracted by the readable content of a page'
-          }
-        />
+        {answers.map((ans, ind) => (
+          <Answer ABCD={String.fromCharCode(ind+65)} answercontent={ans.content} />
+        ))}
       </div>
     );
   }

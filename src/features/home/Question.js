@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
 import { Link } from 'react-router-dom';
-import DetailQuestion from './DetailQuestion'
+import moment from 'moment';
+import Editor from 'tungtung-super-editor';
 
 export class Question extends Component {
   static propTypes = {
@@ -13,31 +14,44 @@ export class Question extends Component {
   };
 
   render() {
+    const {
+      _id,
+      status_type,
+      correct_answer,
+      type,
+      has_suggest_answer,
+      hasSolution,
+      createdAt,
+      updatedAt,
+      content,
+    } = this.props.question;
     return (
       <div className="w-question">
-        <Link to="/detailquestion" className="question">
+        <Link to={`/${_id}`} className="question">
           <div className="w-content">
             <div className="content">
-              Cho một số phát biểu về hoán vị gen như sau Cho một số phát biểu về hoán vị gen như
-              sauCho một số phát biểu về hoán vị gen như sauCho một số phát biểu về hoán vị gen như
-              sau:
+              <Editor value={content} readOnly />
             </div>
           </div>
           <div className="status displaycenter">
-            <p>Need Review</p>
+            <p>{status_type}</p>
           </div>
-          <div className="correctAns displaycenter">1</div>
+          <div className="correctAns displaycenter">{correct_answer}</div>
           <div className="type displaycenter">
-            <p>Mulltiple choices</p>
+            <p>{type.toLowerCase()}</p>
           </div>
           <div className="has-suggest-answer displaycenter">
-            <p>False</p>
+            <p className={has_suggest_answer ? 'ptrue' : 'pfalse'}>
+              {has_suggest_answer ? 'True' : 'False'}
+            </p>
           </div>
           <div className="solution displaycenter">
-            <p>True</p>
+            <p className={hasSolution ? 'ptrue' : 'pfalse'}>
+              {hasSolution ? 'True' : 'False'}
+            </p>
           </div>
-          <div className="createdAt displaycenter">2 hours ago</div>
-          <div className="updatedAt displaycenter">60 minutes ago</div>
+          <div className="createdAt displaycenter">{moment(createdAt).fromNow()}</div>
+          <div className="updatedAt displaycenter">{moment(updatedAt).fromNow()}</div>
         </Link>
       </div>
     );

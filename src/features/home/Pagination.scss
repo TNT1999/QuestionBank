@@ -5,7 +5,15 @@
   display: flex;
   justify-content: flex-end;
   .w-ip {
-    margin-right: 16px;
+    margin-right: 45px;
+    display: flex;
+    align-items: center;
+    .arr{
+      &:hover{
+        cursor: pointer
+      }
+      margin: 0px 16px;
+    }
     input[type='number'] {
       height: 24px;
       border-radius: 5px;
@@ -15,6 +23,7 @@
       width: 48px;
       padding: 0 10px;
       padding-right: 0;
+      padding-bottom: 4px;
       text-align: right;
       font-family: Bookerly;
       font-size: 16px;
