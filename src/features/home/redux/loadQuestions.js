@@ -23,10 +23,10 @@ export function loadQuestions(p, l) {
       // See the real-word example at:  https://github.com/supnate/rekit/blob/master/src/features/home/redux/fetchRedditReactjsList.js
       // args.error here is only for test coverage purpose.
       //const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
-      const doRequest = axios.get(
-        `https://tungtung-sample.herokuapp.com/tests/data/questions?page=${p}&limit=${l}&key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTcxNzQ5MzYwLCJleHAiOjE1NzE5MjIxNjB9.6FMUXaYps36zB9sHAmeDNFO1R8X5uk81DRxTfLgB4Kg`,
-      );
 
+      const doRequest = axios.get(
+        `https://tungtung-sample.herokuapp.com/tests/data/questions?page=${p}&limit=${l}&key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTcxOTMzNjk2LCJleHAiOjE1NzIxMDY0OTZ9.BRO0ctAh6YXJ3h7QG2oS5A32auuQiSKbj46FMOoi7DQ`,
+      );
       doRequest.then(
         res => {
           dispatch({

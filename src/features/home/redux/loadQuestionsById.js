@@ -25,7 +25,7 @@ export function loadQuestionsById(id) {
       // args.error here is only for test coverage purpose.
       //const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
       const doRequest = axios.get(
-        `https://tungtung-sample.herokuapp.com/tests/data/questions/find?id=${id}&key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTcxNzQ5MzYwLCJleHAiOjE1NzE5MjIxNjB9.6FMUXaYps36zB9sHAmeDNFO1R8X5uk81DRxTfLgB4Kg`,
+        `https://tungtung-sample.herokuapp.com/tests/data/questions/find?id=${id}&key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTcxOTMzNjk2LCJleHAiOjE1NzIxMDY0OTZ9.BRO0ctAh6YXJ3h7QG2oS5A32auuQiSKbj46FMOoi7DQ`,
       );
       doRequest.then(
         res => {
@@ -72,7 +72,7 @@ export function reducer(state, action) {
       // The request is success
       return {
         ...state,
-        curQuestion:action.data,
+        curQuestion: action.data,
         loadQuestionsByIdPending: false,
         loadQuestionsByIdError: null,
       };
