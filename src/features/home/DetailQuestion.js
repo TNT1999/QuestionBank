@@ -19,14 +19,17 @@ export class DetailQuestion extends Component {
     }
   }
   render() {
-    const { listQuestion } = this.props.home;
+    const { listQuestion, curQuestion } = this.props.home;
     const { id } = this.props.match.params;
     const index = listQuestion.findIndex(x => x._id === id);
     return index >= 0 ? (
       <div className="wrap-content-question">
         <div className="f-question">
           <ContentQuestion content={listQuestion[index].content} />
-          <Answers answers={listQuestion[index].answers} correct={listQuestion[index].correct_answer}/>
+          <Answers
+            answers={listQuestion[index].answers}
+            correct={listQuestion[index].correct_answer}
+          />
         </div>
         {listQuestion[index].solution && (
           <div className="slt">
@@ -39,13 +42,13 @@ export class DetailQuestion extends Component {
       this.props.home.curQuestion && (
         <div className="wrap-content-question">
           <div className="f-question">
-            <ContentQuestion content={this.props.home.curQuestion.content} />
-            <Answers answers={this.props.home.curQuestion.answers} correct={this.props.home.curQuestion.correct_answer}/>
+            <ContentQuestion content={curQuestion.content} />
+            <Answers answers={curQuestion.answers} correct={curQuestion.correct_answer} />
           </div>
           {this.props.home.curQuestion.solution && (
             <div className="slt">
               <label>Solution</label>
-              <Editor value={this.props.home.curQuestion.solution} readOnly />
+              <Editor value={curQuestion.solution} readOnly />
             </div>
           )}
         </div>

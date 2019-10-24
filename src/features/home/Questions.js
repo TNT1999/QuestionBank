@@ -15,20 +15,7 @@ export class Questions extends Component {
     if (this.props.home.listQuestion.length === 0) {
       this.props.actions.loadQuestions(this.props.home.curPage, this.props.home.curItemPerPage);
     }
-    //this.refs.loadlist.addEventListener('scroll', this.handle);
   }
-  // componentWillUnmount() {
-  //   this.refs.loadlist.removeEventListener('scroll', this.handle);
-  // }
-  // handle = () => {
-  //   if (
-  //     this.refs.loadlist.scrollTop + this.refs.loadlist.clientHeight ===
-  //     this.refs.loadlist.scrollHeight
-  //   ) {
-  //     console.log('scroll...,loading');
-  //   }
-  // };
-
   render() {
     return (
       <React.Fragment>

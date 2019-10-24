@@ -13,7 +13,6 @@ export function loadQuestions(p, l) {
     dispatch({
       type: HOME_LOAD_QUESTIONS_BEGIN,
     });
-
     // Return a promise so that you could control UI flow without states in the store.
     // For example: after submit a form, you need to redirect the page to another when succeeds or show some errors message if fails.
     // It's hard to use state to manage it, but returning a promise allows you to easily achieve it.

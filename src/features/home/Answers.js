@@ -11,12 +11,11 @@ export class Answers extends Component {
   };
 
   render() {
-    const { answers } = this.props;
+    const { answers,correct } = this.props;
     return (
       <div className="list-answer">
         {answers.map((ans, ind) => (
-          console.log(this.props.correct,ind),
-          <Answer ABCD={String.fromCharCode(ind+65)} answercontent={ans.content} key={ind} correct={this.props.correct==ind}/>
+          <Answer ABCD={String.fromCharCode(ind+65)} answercontent={ans.content} key={ind} correct={correct===ind}/>
         ))}
       </div>
     );
