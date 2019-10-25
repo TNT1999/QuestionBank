@@ -22,9 +22,6 @@ export class Pagination extends Component {
     this.refs.ipp.value = this.state.curPage;
   }
   componentDidMount() {
-    // console.log('re render');
-    //this.refs.ipitem.value = this.props.home.curItemPerPage;
-    // this.refs.ipp.value = this.props.home.curPage;
     const { actions, home } = this.props;
     !home.totalQuestion &&
       actions.loadTotalQuestion().then(() => {
@@ -39,13 +36,13 @@ export class Pagination extends Component {
 
   handleChangeCurItemPerPage = e => {
     this.setState({ curItemPerPage: e.target.value }, () =>
-      this.props.actions.changeItemPage(parseInt(this.state.curItemPerPage)),
+      this.props.actions.changeItemPage(parseInt(this.state.curItemPerPage,10)),
     );
   };
 
   handleChangeCurPage = e => {
     this.setState({ curPage: e.target.value }, () =>
-      this.props.actions.changePage(parseInt(this.state.curPage)),
+      this.props.actions.changePage(parseInt(this.state.curPage,10)),
     );
   };
 
@@ -54,27 +51,24 @@ export class Pagination extends Component {
     return Math.floor(totalQuestion / curItemPerPage);
   };
   handleClickMinus = () => {
-    this.setState({ curPage: parseInt(this.state.curPage) - 1 }, () => {
-      this.props.actions.changePage(parseInt(this.state.curPage));
+    this.setState({ curPage: parseInt(this.state.curPage,10) - 1 }, () => {
+      this.props.actions.changePage(parseInt(this.state.curPage,10));
       this.props.actions.loadQuestions(
-        parseInt(this.state.curPage),
-        parseInt(this.state.curItemPerPage),
+        parseInt(this.state.curPage,10),
+        parseInt(this.state.curItemPerPage,10),
       );
     });
   };
   handleClickPlus = () => {
-    console.log(this.state);
-    this.setState({ curPage: parseInt(this.state.curPage) + 1 }, () => {
-      this.props.actions.changePage(parseInt(this.state.curPage));
+    this.setState({ curPage: parseInt(this.state.curPage,10) + 1 }, () => {
+      this.props.actions.changePage(parseInt(this.state.curPage,10));
       this.props.actions.loadQuestions(
-        parseInt(this.state.curPage),
-        parseInt(this.state.curItemPerPage),
+        parseInt(this.state.curPage,10),
+        parseInt(this.state.curItemPerPage,10),
       );
     });
   };
   render() {
-    //  const { refs } = this;
-    const { actions, home } = this.props;
     const totalPages = this.getTotalPage();
     return (
       <div className="home-pagination">

@@ -12,19 +12,25 @@ export class Questions extends Component {
     actions: PropTypes.object.isRequired,
   };
   componentDidMount() {
-    if (this.props.home.listQuestion.length === 0) {
-      this.props.actions.loadQuestions(this.props.home.curPage, this.props.home.curItemPerPage);
+    const { listQuestion, curItemPerPage, curPage } = this.props.home;
+    if (listQuestion.length === 0) {
+      this.props.actions.loadQuestions(curPage, curItemPerPage);
     }
   }
   render() {
+    const { listQuestion, loadQuestionsPending } = this.props.home;
     return (
       <React.Fragment>
         <Pagination />
         <Nav />
         <div className="list-questions" ref="loadlist">
-          {this.props.home.loadQuestionsPending?<div className='loading'>Loading...</div>:this.props.home.listQuestion.map((val, ind) => (
-            <Question key={val._id} question={val}/>
-          ))}
+          {loadQuestionsPending ? (
+            <div className="loading">Loading...</div>
+          ) : (
+            listQuestion.map((val, ind) => (
+              <Question key={val._id} question={val} />
+            ))
+          )}
         </div>
       </React.Fragment>
     );
