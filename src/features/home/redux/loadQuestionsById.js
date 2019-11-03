@@ -25,7 +25,7 @@ export function loadQuestionsById(id) {
       // args.error here is only for test coverage purpose.
       //const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
       const doRequest = axios.get(
-        `https://tungtung-sample.herokuapp.com/tests/data/questions/find?id=${id}&key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTcyMTYxMDkwLCJleHAiOjE1NzIzMzM4OTB9.pciWxqfvNzLoEjsLHHPc2VYHMc4dlfqNMwRurpnYx7w`,
+        `https://tungtung-sample.herokuapp.com/tests/data/questions/find?id=${id}&key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTcyNzY0MDgzLCJleHAiOjE1NzI5MzY4ODN9.zU_KZ6TotjZSE6CPY3zFlMD1rg6dYM8yRKDuaNy8_Jo`,
       );
       doRequest.then(
         res => {
